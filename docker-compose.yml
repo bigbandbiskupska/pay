@@ -1,0 +1,8 @@
+version: '2'
+services:
+  pay:
+    build: docker
+    ports:
+      - "8000:80"
+    volumes:
+      - ".:/app"
