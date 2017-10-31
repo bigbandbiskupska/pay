@@ -31,10 +31,10 @@ class PayPresenter extends BasePresenter
 				"&currency=CZK" .
 				"&branding=false" .
 				"&message=%s",
-				$this->parameters->params['qr']['account'],
-				$this->parameters->params['qr']['code'],
-				$amount,
-				$message
+				urlencode($this->parameters->params['qr']['account']),
+				urlencode($this->parameters->params['qr']['code']),
+				urlencode($amount),
+				urlencode($message)
 			)
 		);
 		$image->send();
