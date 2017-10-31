@@ -1,2 +1,9 @@
-config.php
-.DS_Store
+log/*
+temp/*
+vendor/*
+!.gitignore
+!.htaccess
+!web.config
+app/config/config.local.neon
+.DS_store
+composer.lock
