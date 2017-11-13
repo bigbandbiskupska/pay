@@ -17,7 +17,20 @@ class RouterFactory
 	public static function createRouter()
 	{
 		$router = new RouteList;
-		$router[] = new Route('[<amount \d+>][/<message>]', 'Pay:default');
+		$defaults = [
+			'vs' => null,
+			'ks' => null,
+			'ss' => null,
+			'message' => '',
+		];
+
+		$router[] = new Route('[vs/<vs \d+>/][ks/<ks \d+>/][ss/<ss \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+		$router[] = new Route('[vs/<vs \d+>/][ss/<ss \d+>/][ks/<ks \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+		$router[] = new Route('[ss/<ss \d+>/][vs/<vs \d+>/][ks/<ks \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+		$router[] = new Route('[ss/<ss \d+>/][ks/<ks \d+>/][vs/<vs \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+		$router[] = new Route('[ks/<ks \d+>/][vs/<vs \d+>/][ss/<ss \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+		$router[] = new Route('[ks/<ks \d+>/][ss/<ss \d+>/][vs/<vs \d+>/][<amount \d+>/][<message>]', 'Pay:all', $defaults);
+
 		return $router;
 	}
 }
